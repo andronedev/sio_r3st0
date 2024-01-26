@@ -40,4 +40,5 @@ php -S localhost:8080
 
 - [ ] Résponsivité
 <img src="image-1.png" alt="Capture d'écran mobile" width="200"/>
+
 >C'est une adaptation du site pour les appareils mobiles. Même si j'ai fait que le site soit utilisable sur les appareils mobiles, il y a encore des améliorations à faire pour que ce soit plus agréable à utiliser **mais ce n'est pas le but du projet**.
