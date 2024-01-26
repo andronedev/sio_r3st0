@@ -4,7 +4,7 @@ if ( $_SERVER["SCRIPT_FILENAME"] == __FILE__ ){
 }
 include_once "$racine/modele/bd.resto.inc.php";
 include_once "$racine/modele/bd.photo.inc.php";
-
+include_once "$racine/modele/bd.critiquer.inc.php";
 // recuperation des donnees GET, POST, et SESSION
 ;
 
@@ -12,7 +12,10 @@ include_once "$racine/modele/bd.photo.inc.php";
 $listeRestos = getRestos();
 
 // traitement si necessaire des donnees recuperees
-;
+for ($i = 0; $i < count($listeRestos); $i++) {
+    $noteMoy = number_format(getNoteMoyenneByIdR($listeRestos[$i]['idR']), 1);
+    $listeRestos[$i]['noteMoy'] = $noteMoy;
+}
 
 // appel du script de vue qui permet de gerer l'affichage des donnees
 $titre = "Liste des restaurants répertoriés";

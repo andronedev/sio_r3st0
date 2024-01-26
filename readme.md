@@ -42,3 +42,7 @@ php -S localhost:8080
 <img src="image-1.png" alt="Capture d'écran mobile" width="200"/>
 
 >C'est une adaptation du site pour les appareils mobiles. Même si j'ai fait que le site soit utilisable sur les appareils mobiles, il y a encore des améliorations à faire pour que ce soit plus agréable à utiliser **mais ce n'est pas le but du projet**.
+
+- [x] Ajout du nombre d'étoiles sur la page de la liste des restaurants
+![capture d'écran](image-2.png)
+>Pour ce faire j'ai du modifier le controleur et la vue de la liste des restaurants.

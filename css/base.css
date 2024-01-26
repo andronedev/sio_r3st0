@@ -234,7 +234,34 @@ a.aimer {
     background-color: #FC2500;
 }
 
-/* Media Query for Mobile Devices */
+.note {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 12px;
+    border-radius: 4px;
+   
+    color: #595959;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+
+    border: 1px solid #e8e8e8;
+}
+
+.note:hover {
+    background-color: #f1f1f1;
+}
+
+.note .icon {
+    margin-right: 4px;
+}
+
+.note .text {
+    margin-left: 4px;
+}
+
+
 @media only screen and (max-width: 600px) {
     :root {
         --largeurPage: 100%;
