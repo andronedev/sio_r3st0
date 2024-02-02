@@ -10,7 +10,6 @@ Bienvenue sur le répertoire officiel de r3st0.fr, un projet scolaire développ�
 - [Lancement](#lancement)
 - [Contribuer](#contribuer)
 - [Documentation](#documentation)
-- [Support](#support)
 
 ## Prérequis
 
