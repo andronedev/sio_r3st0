@@ -6,7 +6,7 @@ Un projet scolaire en BTS SIO.
 
 - [Installation](#installation)
 - [Utilisation](#utilisation)
-- [Améliorations](#améliorations)
+- [Documentation](https://andronedev.github.io/sio_r3st0/)
 
 ## Installation
 
@@ -30,19 +30,3 @@ Ouvrir le projet avec un serveur PHP
 ```bash
 php -S localhost:8080
 ```
-
-## Améliorations
-
-- [x] Ajout de la carte qui montre le lieu du restaurant sur la page detail
-![capture d'écran](image.png)
-[Voir le code](https://github.com/andronedev/sio_r3st0/blob/f103856713e5f9400fc19c1aab0e65750c7ec669/vue/vueDetailResto.php#L52)
->La fonctionnalité utilise Leaflet.js pour afficher une carte interactive dans une div avec l'id map. L'adresse du restaurant est récupérée depuis le serveur et encodée en JSON. Les coordonnées géographiques sont obtenues à partir de l'API de données d'adresse du gouvernement français. La carte est centrée sur ces coordonnées avec un marqueur affichant le nom du restaurant. Les erreurs sont enregistrées dans la console.
-
-- [x] Résponsivité
-<img src="image-1.png" alt="Capture d'écran mobile" width="200"/>
-
->C'est une adaptation du site pour les appareils mobiles. Même si j'ai fait que le site soit utilisable sur les appareils mobiles, il y a encore des améliorations à faire pour que ce soit plus agréable à utiliser **mais ce n'est pas le but du projet**.
-
-- [x] Ajout du nombre d'étoiles sur la page de la liste des restaurants
-![capture d'écran](image-2.png)
->Pour ce faire j'ai du modifier le controleur et la vue de la liste des restaurants.
