@@ -10,7 +10,6 @@ Bienvenue sur le répertoire officiel de r3st0.fr, un projet scolaire développ�
 - [Installation](#installation)
 - [Configuration](#configuration)
 - [Lancement](#lancement)
-- [Contribuer](#contribuer)
 - [Documentation](https://andronedev.github.io/sio_r3st0/)
 
 ## Prérequis
@@ -58,10 +57,3 @@ php -S localhost:8080
 
 Ouvrez votre navigateur et accédez à `http://localhost:8080` pour voir l'application en action.
 
-## Contribuer
-
-Nous accueillons les contributions de tous ! Si vous souhaitez contribuer, veuillez forker le projet, créer une branche pour chaque fonctionnalité ou correction, puis soumettre une pull request.
-
-## Documentation
-
-Pour plus d'informations sur l'utilisation et le développement du projet, veuillez consulter [notre documentation en ligne](https://andronedev.github.io/sio_r3st0/).
