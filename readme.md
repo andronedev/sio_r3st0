@@ -1,4 +1,6 @@
 # r3st0.fr
+[![Documentation - Technique](https://img.shields.io/static/v1?label=Documentation&message=Technique&color=blue&style=for-the-badge&logo=php)](https://andronedev.github.io/sio_r3st0/doc_technique.html)
+[![Documentation - Utilisateur](https://img.shields.io/static/v1?label=Documentation&message=Utilisateur&color=yellow&style=for-the-badge&logo=clubhouse)](https://andronedev.github.io/sio_r3st0/doc_utilisatrice.html)
 
 Bienvenue sur le répertoire officiel de r3st0.fr, un projet scolaire développé par les étudiants en BTS SIO. Ce projet vise à fournir une plateforme web interactive pour explorer, évaluer et découvrir des restaurants.
 
@@ -9,7 +11,7 @@ Bienvenue sur le répertoire officiel de r3st0.fr, un projet scolaire développ�
 - [Configuration](#configuration)
 - [Lancement](#lancement)
 - [Contribuer](#contribuer)
-- [Documentation](#documentation)
+- [Documentation](https://andronedev.github.io/sio_r3st0/)
 
 ## Prérequis
 
