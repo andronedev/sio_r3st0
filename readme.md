@@ -7,7 +7,8 @@ Bienvenue sur le répertoire officiel de r3st0.fr, un projet scolaire développ�
 ## Table des Matières
 
 - [Prérequis](#prérequis)
-- [Installation](#installation)
+- [Installation Standard](#installation-standard)
+- [Installation Docker](#installation-docker)
 - [Configuration](#configuration)
 - [Lancement](#lancement)
 - [Documentation](https://andronedev.github.io/sio_r3st0/)
@@ -19,7 +20,7 @@ Avant de commencer, assurez-vous d'avoir installé :
 - MySQL
 - Un serveur web tel que Apache ou Nginx, ou simplement utiliser le serveur intégré de PHP pour un test local
 
-## Installation
+## Installation Standard
 
 Suivez ces étapes pour installer le projet sur votre machine locale :
 
@@ -40,6 +41,31 @@ Suivez ces étapes pour installer le projet sur votre machine locale :
    ```bash
    cd sio_r3st0
    ```
+
+## Installation [Docker](https://www.docker.com/)
+
+Si vous préférez utiliser Docker pour lancer le projet, suivez ces étapes :
+1. **Clonage du projet**
+
+   Utilisez la commande suivante pour cloner le projet via Git :
+
+   ```
+   git clone https://github.com/andronedev/sio_r3st0.git
+   ```
+
+2. **Mis en place de l'environnement Docker**
+
+   Utilisez la commande suivante pour lancer le projet avec Docker :
+
+   ```
+   docker compose up --build
+   ```
+
+3. **Tester l'application**
+
+   Ouvrez votre navigateur et accédez à `http://localhost:8080` pour voir l'application en action.
+
+
 
 ## Configuration
 

@@ -1,5 +1,9 @@
 <?php
 
+ini_set('display_errors', '0');
+ini_set('display_startup_errors', '0');
+error_reporting(0);
+
 function connexionPDO() {
     $login = "root";
     $mdp = "root";
@@ -12,6 +16,7 @@ function connexionPDO() {
         return $conn;
     } catch (PDOException $e) {
         print "Erreur de connexion PDO ";
+        print $e;
         die();
     }
 }
