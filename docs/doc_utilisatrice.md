@@ -82,5 +82,3 @@ Vous avez la possibilité de supprimer un commentaire que vous avez précédemme
 1. **Accédez au Détail du Restaurant** : Trouvez le restaurant sur lequel vous avez laissé un commentaire et ouvrez sa page de détail.
 2. **Trouvez Votre Commentaire** : Naviguez jusqu'à la section des commentaires où votre avis est publié.
 3. **Option de Suppression** : À côté de votre commentaire, vous verrez une option "Supprimer" ou une icône de corbeille.
-4. **Confirmez la Suppression** : Cliquez sur cette option. Une confirmation vous sera demandée pour éviter les suppressions accidentelles.
-5. **Commentaire Supprimé** : Après confirmation, votre commentaire sera retiré de la page du restaurant.
