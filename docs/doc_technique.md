@@ -235,8 +235,28 @@ $mailU = getMailULoggedOn();
 deleteCritiquer($idR, $mailU);
 header("Location: ?action=detail&idR=$idR");
 ```
-
 Cette fonction récupère l'identifiant du restaurant (`idR`) et l'adresse e-mail de l'utilisateur connecté (`mailU`), appelle la fonction `deleteCritiquer` pour supprimer la critique, puis redirige l'utilisateur vers la page de détail du restaurant.
+
+#### Modification du modèle (`modele/bd.critiquer.inc.php`)
+La fonction `deleteCritiquer` a été ajoutée au modèle pour gérer la suppression des critiques. Cette fonction prend l'identifiant du restaurant et l'adresse e-mail de l'utilisateur connecté comme paramètres, puis supprime la critique correspondante de la base de données.
+
+```php
+function deleteCritiquer($idR, $mailU) {
+    try {
+        $cnx = connexionPDO();
+        $req = $cnx->prepare("delete from critiquer where idR=:idR and mailU=:mailU");
+        $req->bindValue(':idR', $idR, PDO::PARAM_INT);
+        $req->bindValue(':mailU', $mailU, PDO::PARAM_STR);
+        
+        $req->execute();
+    } catch (PDOException $e) {
+        print "Erreur !: " . $e->getMessage();
+        die();
+    }
+}
+
+```
+Cette fonction utilise une requête SQL pour supprimer la critique correspondante de la base de données. Elle est conçue pour être appelée par le contrôleur `supprimerCritique.php` lorsqu'un utilisateur souhaite supprimer son propre commentaire.
 
 #### Modification de la Vue (`vue/vueDetailResto.php`)
 
