@@ -2,11 +2,11 @@
 
 ## Table des Matières
 
-1. **Introduction**
-2. **Navigation sur la Carte des Restaurants**
-3. **Utilisation sur Mobile**
-4. **Comprendre les Évaluations des Restaurants**
-5. **Ajouter et Modifier des Commentaires sur les Restaurants**
+1. [Introduction](#1-introduction)
+2. [Navigation sur la Carte des Restaurants](#2-navigation-sur-la-carte-des-restaurants)
+3. [Utilisation sur Mobile](#3-utilisation-sur-mobile)
+4. [Comprendre les Évaluations des Restaurants](#4-comprendre-les-évaluations-des-restaurants)
+5. [Ajouter et Modifier des Commentaires sur les Restaurants](#5-ajouter-et-modifier-des-commentaires-sur-les-restaurants)
 
 ## 1. Introduction
 
