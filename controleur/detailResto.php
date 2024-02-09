@@ -30,8 +30,7 @@ $noteMoy = round(getNoteMoyenneByIdR($idR), 0);
 $mailU = getMailULoggedOn();
 $aimer = getAimerById($mailU, $idR);
 $critiques = getCritiquerByIdR($idR);
-
-
+$maCritique = maCritique($idR, getMailULoggedOn());
 // appel du script de vue qui permet de gerer l'affichage des donnees
 $titre = "detail d'un restaurant";
 include "$racine/vue/entete.html.php";

@@ -133,3 +133,47 @@
     <?php } ?>
 
 </ul>
+
+<h2>Ajouter une critique</h2>
+
+
+<?php if ($maCritique == false) { ?>
+<form action="?action=commenter" method="POST">
+    <label for="commentaire">Commentaire :</label>
+    <input type="text" name="commentaire" id="commentaire" required>
+
+    <div> 
+        <label>Note :</label>
+        <input type="radio" name="note" value="1" required> 1
+        <input type="radio" name="note" value="2" required> 2
+        <input type="radio" name="note" value="3" required> 3
+        <input type="radio" name="note" value="4" required> 4
+        <input type="radio" name="note" value="5" required> 5
+    </div>
+    <br>
+    <input type="hidden" name="do" value="ajouter">
+    <input type="hidden" name="idR" value="<?= $unResto['idR']; ?>">
+    <input type="submit" value="Ajouter" style="width: 100px; height: 30px;">
+</form>
+
+<?php } else { ?>
+<p>Vous avez déjà commenté ce restaurant</p>
+<small>Modifier votre commentaire</small>
+<form action="?action=commenter" method="POST">
+    <label for="commentaire">Commentaire :</label>
+    <input type="text" name="commentaire" id="commentaire" required value="<?= $maCritique['commentaire']; ?>">
+
+    <div> 
+        <label>Note :</label>
+        <input type="radio" name="note" value="1" required <?php if (!isset($maCritique['note']) || $maCritique['note'] == '1') echo 'checked'; ?>> 1
+        <input type="radio" name="note" value="2" required <?php if (isset($maCritique['note']) && $maCritique['note'] == '2') echo 'checked'; ?>> 2
+        <input type="radio" name="note" value="3" required <?php if (isset($maCritique['note']) && $maCritique['note'] == '3') echo 'checked'; ?>> 3
+        <input type="radio" name="note" value="4" required <?php if (isset($maCritique['note']) && $maCritique['note'] == '4') echo 'checked'; ?>> 4
+        <input type="radio" name="note" value="5" required <?php if (isset($maCritique['note']) && $maCritique['note'] == '5') echo 'checked'; ?>> 5
+    </div>
+    <br>
+    <input type="hidden" name="do" value="modifier">
+    <input type="hidden" name="idR" value="<?= $unResto['idR']; ?>">
+    <input type="submit" value="Modifier" style="width: 100px; height: 30px;">
+</form>
+<?php } ?>
