@@ -6,6 +6,7 @@
 2. [Ajout de la carte](#ajout-de-la-carte)
 3. [Adaptation du responsive](#adaptation-du-responsive)
 4. [Système d'étoiles](#système-d'étoiles)
+5. [Fonctionnalité de Commentaire et Modification de la Fonctionnalité de Critique](#fonctionnalité-de-commentaire-et-modification-de-la-fonctionnalité-de-critique)
 
 ## Introduction
 
@@ -129,3 +130,119 @@ Les améliorations du système d'étoiles ont été réalisées grâce à plusie
 #### Vue de la liste des restaurants (`vue/vueListeRestos.php`)
 
 - **Affichage de la note moyenne** : Au sein de chaque carte de restaurant, un nouvel élément HTML a été ajouté pour afficher la note moyenne à l'aide d'une icône d'étoile suivie de la valeur numérique de la note. Cette présentation visuelle permet aux utilisateurs de rapidement évaluer la qualité du restaurant.
+
+## Fonctionnalité de Commentaire et Modification de la Fonctionnalité de Critique
+![ajouter un commentaire](image-3.png)
+### Ajout de la Fonctionnalité de Commentaire
+
+La fonctionnalité de commentaire a été implémentée pour permettre aux utilisateurs de laisser des commentaires et des notes sur les restaurants. Cette section décrit les modifications apportées au système pour intégrer cette nouvelle fonctionnalité.
+
+#### Contrôleur (`controleur/commenter.php`)
+
+Un nouveau contrôleur `commenter.php` a été ajouté pour gérer les requêtes POST liées aux commentaires des utilisateurs. Ce fichier s'occupe de la logique d'ajout et de modification des critiques par les utilisateurs.
+
+```php
+// Extrait de commenter.php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $commentaire = $_POST["commentaire"];
+    $idR = $_POST["idR"];
+    $note = intval($_POST["note"]);
+    $do = $_POST["do"];
+
+    if ($do == "ajouter") {
+        addCritiquer($idR, getMailULoggedOn(), $note, $commentaire);
+        header("Location: ?action=detail&idR=$idR");
+        exit;
+    } else if ($do == "modifier") {
+        editCritiquer($idR, getMailULoggedOn(), $note, $commentaire);
+        header("Location: ?action=detail&idR=$idR");
+        exit;
+    }
+}
+```
+
+Ce code gère deux actions : `"ajouter"` pour les nouvelles critiques et `"modifier"` pour les critiques existantes. La fonction `addCritiquer` ajoute une nouvelle critique, tandis que `editCritiquer` met à jour une critique existante.
+
+### Vue (`vue/vueDetailResto.php`)
+
+La vue détail d'un restaurant a été mise à jour pour inclure un formulaire permettant d'ajouter ou de modifier une critique.
+
+```html
+<!-- Extrait de vueDetailResto.php pour l'ajout d'une critique -->
+<form action="?action=commenter" method="POST">
+    <label for="commentaire">Commentaire :</label>
+    <input type="text" name="commentaire" id="commentaire" required>
+    <div> 
+        <label>Note :</label>
+        <input type="radio" name="note" value="1" required> 1
+        <!-- autres boutons radio -->
+    </div>
+    <input type="hidden" name="do" value="ajouter">
+    <input type="hidden" name="idR" value="<?= $unResto['idR']; ?>">
+    <input type="submit" value="Ajouter">
+</form>
+```
+
+Ce formulaire apparaît si l'utilisateur n'a pas encore commenté le restaurant. Il comprend un champ pour le commentaire, des boutons radio pour la note, et des champs cachés pour déterminer l'action et l'identifiant du restaurant.
+
+#### Affichage Conditionnel du Formulaire
+Sur la page de détail d'un restaurant, la logique suivante détermine quel formulaire afficher à l'utilisateur :
+    
+```php
+    // Extrait adapté de vueDetailResto.php
+<?php if ($maCritique == false) { ?>
+    <!-- Formulaire pour ajouter une nouvelle critique -->
+    <form action="?action=commenter" method="POST">
+        <!-- Champs du formulaire pour l'ajout -->
+    </form>
+<?php } else { ?>
+    <!-- Formulaire pour modifier une critique existante -->
+    <form action="?action=commenter" method="POST">
+        <!-- Champs pré-remplis avec les données de la critique existante -->
+    </form>
+<?php } ?>
+
+```
+Si `maCritique` retourne false, cela signifie que l'utilisateur n'a pas encore critiqué le restaurant, et donc le formulaire d'ajout de critique est affiché. Si `maCritique` retourne un tableau avec les détails de la critique existante, le formulaire de modification est affiché avec les champs pré-remplis par les données existantes (commentaire et note).
+![affichage modification](image-4.png)
+#### Gestion de l'Ajout et de la Modification
+
+La distinction entre l'ajout et la modification est gérée par un champ caché nommé `do` dans le formulaire, qui peut prendre les valeurs `"ajouter"` ou `"modifier"`. Ce champ détermine l'action à effectuer lorsque le formulaire est soumis :
+
+- Pour une nouvelle critique, `do` est défini à `"ajouter"`, et la fonction `addCritiquer` est appelée.
+- Pour modifier une critique existante, `do` est défini à `"modifier"`, et la fonction `editCritiquer` est appelée.
+
+Cette approche permet une gestion efficace et intuitive des critiques par les utilisateurs, facilitant à la fois la contribution de nouveaux avis et la mise à jour d'avis existants.
+
+### Suppression des Commentaires
+![supprimer commentaire](image-5.png)
+
+#### Implémentation de la Fonctionnalité de Suppression
+
+La possibilité pour un utilisateur de supprimer son propre commentaire a été intégrée au système. Cette fonctionnalité est essentielle pour permettre aux utilisateurs de gérer leur propre contenu, en particulier s'ils souhaitent retirer un avis précédemment publié.
+
+#### Contrôleur (`controleur/supprimerCritique.php`)
+
+Un nouveau contrôleur `supprimerCritique.php` a été ajouté pour gérer la suppression des critiques. Ce fichier contrôleur traite les demandes de suppression initiées par les utilisateurs.
+
+```php
+// Extrait simplifié de supprimerCritique.php
+include_once "$racine/modele/bd.critiquer.inc.php";
+
+$idR = $_GET["idR"];
+$mailU = getMailULoggedOn();
+
+deleteCritiquer($idR, $mailU);
+header("Location: ?action=detail&idR=$idR");
+```
+
+Cette fonction récupère l'identifiant du restaurant (`idR`) et l'adresse e-mail de l'utilisateur connecté (`mailU`), appelle la fonction `deleteCritiquer` pour supprimer la critique, puis redirige l'utilisateur vers la page de détail du restaurant.
+
+#### Modification de la Vue (`vue/vueDetailResto.php`)
+
+La vue de détail du restaurant a été mise à jour pour inclure un lien ou un bouton permettant à l'utilisateur de supprimer son commentaire.
+
+
+### Résumé
+
+La fonctionnalité de commentaire enrichit l'interaction des utilisateurs avec le site, offrant la possibilité de partager des avis détaillés sur les restaurants. L'ajout de cette fonctionnalité implique des modifications au niveau des contrôleurs pour gérer les actions des utilisateurs, ainsi que des mises à jour dans les vues pour afficher les formulaires de commentaire.
