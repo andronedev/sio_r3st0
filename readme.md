@@ -31,6 +31,8 @@ Suivez ces étapes pour installer le projet sur votre machine locale :
    git clone https://github.com/andronedev/sio_r3st0.git
    ```
 
+   Ou téléchargez le projet directement depuis GitHub en cliquant [ici](https://github.com/andronedev/sio_r3st0/archive/refs/heads/main.zip)
+
 2. **Accès au répertoire du projet**
 
    Changez de répertoire pour accéder au projet cloné :
